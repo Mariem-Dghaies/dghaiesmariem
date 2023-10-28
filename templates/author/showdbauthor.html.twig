@@ -1,0 +1,33 @@
+{{form(f)}}
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>numbre book</td>
+        <td>action</td>
+        <td>supprimer</td>
+
+        
+       
+    </tr>
+    {% for i in author  %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.username}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.nbbook}}</td>
+        <td><a href={{path('editauthor',{'id':i.id})}}> edit</a></td>
+        <td><a href={{path('deleteauthor',{'id':i.id})}}>supprimer</a></td>
+
+</tr>
+
+    {% endfor %}
+   
+</table>
+{#  <h1>Supprimer les auteurs sans livres</h1>
+    <p>Cliquez sur le bouton ci-dessous pour supprimer les auteurs sans livres :</p>
+    
+    <form action="{{ path('delete_authors_with_no_books') }}" method="get">
+        <button type="submit" class="btn btn-danger">Supprimer les auteurs sans livres</button> #}
+  

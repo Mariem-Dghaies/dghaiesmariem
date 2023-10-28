@@ -1,0 +1,55 @@
+{{form_start(f)}}
+{{form_label(f.ref)}}
+{{form_widget(f.ref)}}
+{{form_end(f)}}  
+<table border="3">
+    <tr>
+        <td>ref</td>
+        <td>title</td>
+        <td>Publicationdate</td>
+        <td>Published</td>
+        <td>category</td>
+        <td>Author</td>
+        <td>update</td>
+        <td>delete</td>
+
+        
+       
+    </tr>
+    {% for i in book  %}
+    <tr>
+        <td>{{i.ref}}</td>
+        <td>{{i.title}}</td>
+        <td>{{i.publicationdate.format('Y-M-D')}}</td>
+        <td>{{i.published}}</td>
+        <td>{{i.category}}</td>
+        <td>{{i.author.username}}</a></td>
+        <td><a href="{{path('edit',{'ref':i.ref})}}">edit</a></td>
+        <td><a href="{{path('delete',{'ref':i.ref})}}">delete</a></td>
+    
+        
+
+    </tr>
+
+    {% endfor %}
+   
+</table>
+<hr>
+<button><a href="{{path('addbook')}}">add</a></button> 
+<hr>
+
+ <h1>Liste des Livres</h1>
+ <p>Nombre de Livres Publiés : {{ Published }}</p>
+<p>Nombre de Livres Non Publiés : {{ unPublished }}</p>
+<hr> 
+<h1>Total Science Fiction</h1>
+<p>Total Categorie Science Fiction est : {{ total }}</p>
+<hr>
+<h1> list des livre publier entre {{ startDate|date("Y-m-d") }} and {{ endDate|date("Y-m-d") }}</h1>
+
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} - {{ book.publicationDate|date("Y-m-d") }}</li>
+        {% endfor %}
+    </ul>
+
